@@ -23,7 +23,6 @@ class ListMembersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentListMembersBinding.inflate(inflater)
-
         val application = requireNotNull(this.activity).application
         val dataSource = MemberDatabase.getInstance().memberDatabseDao
         val viewModelFactory = ListMembersViewModelFactory(dataSource, application)
@@ -35,9 +34,6 @@ class ListMembersFragment : Fragment() {
 
         // put the new list to adapter
         binding.memberList.adapter = adapter
-
-
-
         binding.viewModel = viewModelMember
         viewModelMember.members.observe(viewLifecycleOwner, {
             adapter.submitList(it)
