@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parliamentmembersapp.database.MemberOfParliament
-import com.example.parliamentmembersapp.databinding.MemberItemLayoutBinding
+import com.example.parliamentmembersapp.databinding.MemberItemBinding
 
 class MemberAdapter : ListAdapter<MemberOfParliament, MemberAdapter.ViewHolder>(
     MemberOfParliamentDiffCallBack()
 ) {
-    class ViewHolder private constructor(private val binding: MemberItemLayoutBinding) :
+    class ViewHolder private constructor(private val binding: MemberItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: MemberOfParliament) {
@@ -22,7 +22,7 @@ class MemberAdapter : ListAdapter<MemberOfParliament, MemberAdapter.ViewHolder>(
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = MemberItemLayoutBinding.inflate(layoutInflater, parent, false)
+                val binding = MemberItemBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }

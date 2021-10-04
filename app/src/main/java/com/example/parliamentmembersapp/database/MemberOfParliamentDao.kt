@@ -16,9 +16,6 @@ interface MemberOfParliamentDao {
     @Update
     suspend fun update(member: MemberOfParliament)
 
-    //@Query ("SELECT * FROM members_of_parliament_table ORDER BY first_name ASC")
-    //suspend fun getMembersSortByAscFirstName(): MemberOfParliament
-
     @Query("SELECT * FROM members_of_parliament_table WHERE personNumber == :key")
     suspend fun getMember(key: Int) : MemberOfParliament
 
