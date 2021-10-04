@@ -33,7 +33,6 @@ class ListMembersFragment : Fragment() {
  * Allows Binding to Observe this fragment
  */
         val adapter = MemberAdapter()
-
         // put the new list to adapter
         binding.memberList.adapter = adapter
         binding.viewModel = viewModelMember

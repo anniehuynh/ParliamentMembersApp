@@ -16,9 +16,10 @@ import com.example.parliamentmembersapp.databinding.MemberItemBinding
 class MemberAdapter : ListAdapter<MemberOfParliament, MemberAdapter.ViewHolder>(
     MemberOfParliamentDiffCallBack()
 ) {
-    class ViewHolder private constructor(private val binding: MemberItemBinding) :
+    class ViewHolder private constructor(val binding: MemberItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        // Update ViewModel to use data binding to bind the data
         fun bind(item: MemberOfParliament) {
             binding.member = item
             binding.executePendingBindings()
@@ -43,41 +44,6 @@ class MemberAdapter : ListAdapter<MemberOfParliament, MemberAdapter.ViewHolder>(
     }
 }
 
-/*class MemberAdapter : ListAdapter<MemberOfParliament, MemberAdapter.ViewHolder>(MemberOfParliamentDiffCallBack()) {
-    class ViewHolder private constructor(private val binding: MemberItemLayoutBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        //val fullNameTextView = binding.memberName
-
-        fun bind(member: MemberOfParliament) {
-            binding.memberName.text = "Hello"
-            //binding.member = item
-            binding.executePendingBindings()
-        }
-
-        companion object {
-            fun from(parent: ViewGroup): ViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = MemberItemLayoutBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(binding)
-            }
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
-    }
-
-    //@SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val member = getItem(position)
-        Log.i("member adapter", member.toString())
-        holder.bind(member)
-        /*val textView = holder.fullNameTextView
-        textView.text = "${member.first} ${member.last}"*/
-    }
-
-}*/
 
 class MemberOfParliamentDiffCallBack : DiffUtil.ItemCallback<MemberOfParliament>() {
     override fun areItemsTheSame(

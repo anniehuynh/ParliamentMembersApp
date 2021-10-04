@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 /**
- * Entity of Member of Parliament created
+ * Entity of Member of Parliament table created
  * by An Huynh
  * on 30/9/2021
  */
