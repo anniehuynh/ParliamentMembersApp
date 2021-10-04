@@ -1,5 +1,10 @@
 package com.example.parliamentmembersapp.screen
 
+/**
+ * MemberAdapter class
+ * by An Huynh
+ * on 3/10/2021
+ */
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter

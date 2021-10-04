@@ -11,13 +11,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.TestFragment">
+        tools:context=".screen.ListMembersFragment">
 
         <TextView
             android:id="@+id/appText"
             style="@style/General"
             android:fontFamily="casual"
             android:text="@string/list_of_members"
+            android:layout_marginTop="20dp"
             android:textColor="@color/text_color"
             app:layout_constraintBottom_toTopOf="@+id/memberList"
             app:layout_constraintEnd_toEndOf="parent"

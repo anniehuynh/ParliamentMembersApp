@@ -21,21 +21,23 @@ class ListMembersViewModel(dataSource: MemberOfParliamentDao,
 
     val database = dataSource
 
-    private var memberInDisplay = MutableLiveData<MemberOfParliament>()
+    private var displayMember = MutableLiveData<MemberOfParliament>()
 
     var members = database.getAllMembers()
-
+/*
     val nightsString = Transformations.map(members) { members ->
         formatMembers(members, application.resources)
     }
 
+ */
+
     init {
-        initializingMember()
+        getMembersDetails()
     }
 
-    private fun initializingMember() {
+    private fun getMembersDetails() {
         viewModelScope.launch {
-            memberInDisplay.value = getMemberFromDatabase()
+            displayMember.value = getMemberFromDatabase()
         }
     }
 

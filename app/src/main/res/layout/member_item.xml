@@ -48,7 +48,7 @@
             android:padding="5dp"
             android:layout_marginStart="25dp"
             android:gravity="start"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textColor="@color/text_color2"
             android:text="@{member.first + ' ' + member.last}"
             app:layout_constraintEnd_toEndOf="parent"

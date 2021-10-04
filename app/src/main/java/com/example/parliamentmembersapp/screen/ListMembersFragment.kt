@@ -29,16 +29,21 @@ class ListMembersFragment : Fragment() {
         val viewModelMember: ListMembersViewModel by lazy {
             ViewModelProvider(this, viewModelFactory).get(ListMembersViewModel::class.java)
         }
-
+/**
+ * Allows Binding to Observe this fragment
+ */
         val adapter = MemberAdapter()
 
         // put the new list to adapter
         binding.memberList.adapter = adapter
         binding.viewModel = viewModelMember
         viewModelMember.members.observe(viewLifecycleOwner, {
-            adapter.submitList(it)
+            it?.let {
+                adapter.submitList(it)
+            }
         })
 
+        binding.lifecycleOwner = this
         return binding.root
     }
 }

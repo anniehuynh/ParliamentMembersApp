@@ -1,5 +1,10 @@
 package com.example.parliamentmembersapp.screen
 
+/**
+ * ViewModelFactory class
+ * by An Huynh
+ * on 03/10/2021
+ */
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
