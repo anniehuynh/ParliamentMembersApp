@@ -6,12 +6,12 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.parliamentmembersapp.screen.ListMembersViewModel" />
+            type="com.example.parliamentmembersapp.members_list.ListMembersViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.ListMembersFragment">
+        tools:context=".member_list.ListMembersFragment">
 
         <TextView
             android:id="@+id/appText"

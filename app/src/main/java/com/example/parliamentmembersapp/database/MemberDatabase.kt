@@ -5,10 +5,10 @@ package com.example.parliamentmembersapp.database
  * by An Huynh
  * on 30/9/2021
  */
-import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.parliamentmembersapp.MyApp
 
 @Database(entities = [MemberOfParliament::class], version = 1, exportSchema = false)
 abstract class MemberDatabase: RoomDatabase() {

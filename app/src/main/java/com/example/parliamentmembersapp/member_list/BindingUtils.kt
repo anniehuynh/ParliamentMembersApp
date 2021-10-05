@@ -1,4 +1,4 @@
-package com.example.parliamentmembersapp.screen
+package com.example.parliamentmembersapp.member_list
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter

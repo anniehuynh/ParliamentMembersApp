@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/listMembersFragment">
+
+    <fragment
+        android:id="@+id/listMembersFragment"
+        android:name="com.example.parliamentmembersapp.member_list.ListMembersFragment"
+        android:label="ListMembersFragment"
+        tools:layout="@layout/fragment_list_members">
+        <action
+            android:id="@+id/action_listMembersFragment_to_membersDetailFragment"
+            app:destination="@id/membersDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/membersDetailFragment"
+        android:name="com.example.parliamentmembersapp.members_detail.MembersDetailFragment"
+        android:label="MembersDetailFragment"
+        tools:layout = "@layout/fragment_members_detail"/>
+</navigation>

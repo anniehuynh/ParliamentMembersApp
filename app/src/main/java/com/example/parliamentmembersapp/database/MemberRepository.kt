@@ -1,4 +1,4 @@
-package com.example.parliamentmembersapp.repository
+package com.example.parliamentmembersapp.database
 
 /**
  * Repository

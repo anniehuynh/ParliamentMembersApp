@@ -1,4 +1,4 @@
-package com.example.parliamentmembersapp.database
+package com.example.parliamentmembersapp
 
 import android.app.Application
 import android.content.Context

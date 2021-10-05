@@ -1,4 +1,4 @@
-package com.example.parliamentmembersapp.screen
+package com.example.parliamentmembersapp.member_list
 
 /**
  *  List Member Fragment that will show list of members
@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.parliamentmembersapp.database.MemberDatabase
@@ -17,7 +18,10 @@ import com.example.parliamentmembersapp.databinding.FragmentListMembersBinding
 
 class ListMembersFragment : Fragment() {
 
-
+    /**
+     * Called when the Fragment is ready to display content to the screen.
+     * This function uses DataBindingUtil to inflate R.layout.fragment_list_members.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +36,12 @@ class ListMembersFragment : Fragment() {
 /**
  * Allows Binding to Observe this fragment
  */
-        val adapter = MemberAdapter()
+        val adapter = MemberAdapter(MemberListener {
+        personNumber -> Toast.makeText(context, "${personNumber}", Toast.LENGTH_LONG).show()
+})
+
+
+
         // put the new list to adapter
         binding.memberList.adapter = adapter
         binding.viewModel = viewModelMember

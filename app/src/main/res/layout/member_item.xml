@@ -6,40 +6,16 @@
         <variable
             name="member"
             type="com.example.parliamentmembersapp.database.MemberOfParliament" />
+        <variable
+            name="clickListener"
+            type="com.example.parliamentmembersapp.member_list.MemberListener" />
     </data>
 
-    <!--<FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/memberImg"
-            android:layout_width="64dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/btn_star_big_on" />
-
-        <TextView
-            android:id="@+id/memberName"
-            android:layout_width="0dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-    </FrameLayout> -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(member)}">
+
 
         <TextView
             android:id="@+id/member_name"
@@ -50,7 +26,7 @@
             android:gravity="start"
             android:textSize="18sp"
             android:textColor="@color/text_color2"
-            android:text="@{member.first + ' ' + member.last}"
+            app:fullName="@{member}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

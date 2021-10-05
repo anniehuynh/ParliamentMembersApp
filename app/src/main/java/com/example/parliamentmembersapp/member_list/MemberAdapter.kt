@@ -1,4 +1,4 @@
-package com.example.parliamentmembersapp.screen
+package com.example.parliamentmembersapp.member_list
 
 /**
  * MemberAdapter class
@@ -13,15 +13,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.parliamentmembersapp.database.MemberOfParliament
 import com.example.parliamentmembersapp.databinding.MemberItemBinding
 
-class MemberAdapter : ListAdapter<MemberOfParliament, MemberAdapter.ViewHolder>(
+class MemberAdapter(val clickListener: MemberListener) : ListAdapter<MemberOfParliament, MemberAdapter.ViewHolder>(
     MemberOfParliamentDiffCallBack()
 ) {
     class ViewHolder private constructor(val binding: MemberItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         // Update ViewModel to use data binding to bind the data
-        fun bind(item: MemberOfParliament) {
+        fun bind(item: MemberOfParliament, clickListener: MemberListener) {
             binding.member = item
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -39,8 +40,7 @@ class MemberAdapter : ListAdapter<MemberOfParliament, MemberAdapter.ViewHolder>(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
+        holder.bind(getItem(position), clickListener)
     }
 }
 
@@ -59,4 +59,10 @@ class MemberOfParliamentDiffCallBack : DiffUtil.ItemCallback<MemberOfParliament>
     ): Boolean {
         return oldItem == newItem
     }
+}
+
+//Define a callBack clickListener for the ViewHolder to inform the fragment that a click happens
+class MemberListener(val clickListener: (personNumber: Int) -> Unit) {
+    fun onClick(member: MemberOfParliament) = clickListener(member.personNumber)
+
 }
