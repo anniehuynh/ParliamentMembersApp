@@ -16,6 +16,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.parliamentmembersapp.database.MemberDatabase
 import com.example.parliamentmembersapp.databinding.FragmentListMembersBinding
+import com.example.parliamentmembersapp.members_detail.MembersDetailFragment
+import com.example.parliamentmembersapp.members_detail.MembersDetailFragmentArgs
 
 class ListMembersFragment : Fragment() {
 
@@ -52,15 +54,17 @@ class ListMembersFragment : Fragment() {
         })
 
         //Observe the navigateToMembersDetail LiveData
-        listMembersViewModel.navigateToMembersDetail.observe(viewLifecycleOwner, { member ->
-            member?.let {
+        listMembersViewModel.navigateToMembersDetail.observe(viewLifecycleOwner, { personNumber ->
+            personNumber?.let {
                 this.findNavController().navigate(
-                    ListMembersFragmentDirections.actionListMembersFragmentToMembersDetailFragment()
+                    ListMembersFragmentDirections
+                        .actionListMembersFragmentToMembersDetailFragment(personNumber)
                 )
                 listMembersViewModel.onMembersDetailNavigated()
             }
         })
-
+        //val args = MembersDetailFragmentArgs.fromBundle(requireArguments())
+        //Toast.makeText(context, "Member: ${args.personNumber}", Toast.LENGTH_LONG).show()
         binding.lifecycleOwner = this
         return binding.root
     }

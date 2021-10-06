@@ -17,7 +17,7 @@ interface MemberOfParliamentDao {
     suspend fun update(member: MemberOfParliament)
 
     @Query("SELECT * FROM members_of_parliament_table WHERE personNumber == :key")
-    suspend fun getMember(key: Int) : MemberOfParliament
+    suspend fun getMemberWithId(key: Int) : MemberOfParliament
 
     @Query("SELECT * FROM members_of_parliament_table ORDER BY first_name ASC")
     fun getAllMembers() : LiveData<List<MemberOfParliament>>

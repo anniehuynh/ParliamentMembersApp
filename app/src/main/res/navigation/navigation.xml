@@ -18,5 +18,9 @@
         android:id="@+id/membersDetailFragment"
         android:name="com.example.parliamentmembersapp.members_detail.MembersDetailFragment"
         android:label="MembersDetailFragment"
-        tools:layout = "@layout/fragment_members_detail"/>
+        tools:layout = "@layout/fragment_members_detail">
+        <argument
+            android:name="personNumber"
+            app:argType="integer" />
+    </fragment>
 </navigation>
