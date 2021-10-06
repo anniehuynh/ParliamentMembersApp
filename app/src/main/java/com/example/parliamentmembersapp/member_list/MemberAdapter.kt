@@ -63,6 +63,6 @@ class MemberOfParliamentDiffCallBack : DiffUtil.ItemCallback<MemberOfParliament>
 
 //Define a callBack clickListener for the ViewHolder to inform the fragment that a click happens
 class MemberListener(val clickListener: (personNumber: Int) -> Unit) {
-    fun onClick(member: MemberOfParliament) = clickListener(member.personNumber)
+    fun onMemberClick(member: MemberOfParliament) = clickListener(member.personNumber)
 
 }

@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.parliamentmembersapp.database.MemberDatabase
 import com.example.parliamentmembersapp.databinding.FragmentListMembersBinding
 
@@ -30,24 +31,33 @@ class ListMembersFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = MemberDatabase.getInstance().memberDatabseDao
         val viewModelFactory = ListMembersViewModelFactory(dataSource, application)
-        val viewModelMember: ListMembersViewModel by lazy {
+        val listMembersViewModel: ListMembersViewModel by lazy {
             ViewModelProvider(this, viewModelFactory).get(ListMembersViewModel::class.java)
         }
-/**
- * Allows Binding to Observe this fragment
- */
-        val adapter = MemberAdapter(MemberListener {
-        personNumber -> Toast.makeText(context, "${personNumber}", Toast.LENGTH_LONG).show()
-})
 
-
-
+        /**
+         * Allows Binding to Observe this fragment
+         */
+        val adapter = MemberAdapter(MemberListener { personNumber ->
+            Toast.makeText(context, "$personNumber", Toast.LENGTH_LONG).show()
+            listMembersViewModel.onMemberNameClicked(personNumber)
+        })
         // put the new list to adapter
         binding.memberList.adapter = adapter
-        binding.viewModel = viewModelMember
-        viewModelMember.members.observe(viewLifecycleOwner, {
+        binding.viewModel = listMembersViewModel
+        listMembersViewModel.members.observe(viewLifecycleOwner, {
             it?.let {
                 adapter.submitList(it)
+            }
+        })
+
+        //Observe the navigateToMembersDetail LiveData
+        listMembersViewModel.navigateToMembersDetail.observe(viewLifecycleOwner, { member ->
+            member?.let {
+                this.findNavController().navigate(
+                    ListMembersFragmentDirections.actionListMembersFragmentToMembersDetailFragment()
+                )
+                listMembersViewModel.onMembersDetailNavigated()
             }
         })
 

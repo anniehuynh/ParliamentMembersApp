@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.parliamentmembersapp.database.MemberOfParliament
 import com.example.parliamentmembersapp.database.MemberOfParliamentDao
-import com.example.parliamentmembersapp.formatMembers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
@@ -46,7 +45,16 @@ class ListMembersViewModel(dataSource: MemberOfParliamentDao,
         viewModelJob.cancel()
     }
 
-    private val _navigateToMembersDetails = MutableLiveData<Long>()
-    val navigateToMembersDetails
-        get() = _navigateToMembersDetails
+    //Click Handler function
+    fun onMemberNameClicked(id: Int) {
+        _navigateToMembersDetail.value = id
+    }
+    private val _navigateToMembersDetail = MutableLiveData<Int>()
+    val navigateToMembersDetail
+        get() = _navigateToMembersDetail
+
+    //Define a method to call after the app has finished navigating
+    fun onMembersDetailNavigated() {
+        _navigateToMembersDetail.value = null
+    }
 }
