@@ -3,6 +3,7 @@ package com.example.parliamentmembersapp.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.squareup.moshi.Json
 
 /**
  * Entity of Member of Parliament table created
@@ -24,7 +25,7 @@ data class MemberOfParliament (
     @ColumnInfo(name = "is_a_minister")
     val minister: Boolean = false,
     @ColumnInfo(name = "picture")
-    val picture: String = "",
+    @Json(name = "picture") val pictureUrl: String = "",
     @ColumnInfo(name = "twitter_link")
     val twitter: String = "",
     @ColumnInfo(name = "born_year")

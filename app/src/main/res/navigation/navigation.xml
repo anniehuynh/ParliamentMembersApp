@@ -22,5 +22,8 @@
         <argument
             android:name="personNumber"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_membersDetailFragment_to_listMembersFragment"
+            app:destination="@id/listMembersFragment" />
     </fragment>
 </navigation>

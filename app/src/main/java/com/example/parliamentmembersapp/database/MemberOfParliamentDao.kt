@@ -14,17 +14,21 @@ interface MemberOfParliamentDao {
     suspend fun insert(member: MemberOfParliament)
 
     @Update
-    suspend fun update(member: MemberOfParliament)
+    suspend fun updateMember(member: MemberOfParliament)
 
-    @Query("SELECT * FROM members_of_parliament_table WHERE personNumber == :key")
-    suspend fun getMemberWithId(key: Int) : MemberOfParliament
+    @Query("SELECT * FROM members_of_parliament_table WHERE personNumber = :personNumber")
+    suspend fun getMember(personNumber: Int) : MemberOfParliament
+
+    @Query("SELECT * FROM members_of_parliament_table WHERE personNumber = :personNumber")
+    fun getMemberDetails(personNumber: Int) : LiveData<MemberOfParliament>
 
     @Query("SELECT * FROM members_of_parliament_table ORDER BY first_name ASC")
     fun getAllMembers() : LiveData<List<MemberOfParliament>>
 
     @Query("DELETE FROM members_of_parliament_table")
-    suspend fun clear()
+    suspend fun clearTable()
 
     @Query("SELECT * FROM members_of_parliament_table ORDER BY personNumber DESC LIMIT 1")
     suspend fun getOneMember(): MemberOfParliament?
+
 }

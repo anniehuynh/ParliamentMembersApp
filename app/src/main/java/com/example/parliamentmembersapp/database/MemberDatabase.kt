@@ -12,7 +12,7 @@ import com.example.parliamentmembersapp.MyApp
 
 @Database(entities = [MemberOfParliament::class], version = 1, exportSchema = false)
 abstract class MemberDatabase: RoomDatabase() {
-    abstract val memberDatabseDao: MemberOfParliamentDao
+    abstract val memberDatabaseDao: MemberOfParliamentDao
 
     companion object {
         @Volatile

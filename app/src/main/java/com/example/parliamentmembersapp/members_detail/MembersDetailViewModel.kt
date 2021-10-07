@@ -5,35 +5,41 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.parliamentmembersapp.database.MemberDatabase
 import com.example.parliamentmembersapp.database.MemberOfParliament
 import com.example.parliamentmembersapp.database.MemberOfParliamentDao
 import kotlinx.coroutines.launch
+
+enum class MembersApiStatus { LOADING, ERROR, DONE }
 
 /**
  * ViewModel for MembersDetailFragment
  * by An Huynh
  * on 4/10/2021.
  */
-class MembersDetailViewModel(private val personNumber: MemberOfParliamentDao,
-                             datasource: Application
-) : ViewModel() {
-    /**
-     * Hold a reference to SleepDatabase via its SleepDatabaseDao.
-     */
-    val database = datasource
+class MembersDetailViewModel() : ViewModel() {
 
-    private lateinit var member: MutableLiveData<MemberOfParliament>
+    private val database: MemberOfParliamentDao
 
+
+    private lateinit var _memberDetails: LiveData<MemberOfParliament>
+    val memberDetails: LiveData<MemberOfParliament>
+        get() = _memberDetails
+
+    private lateinit var _personNumber: LiveData<Int>
+    val personNumber: LiveData<Int>
+    get() = _personNumber
 
     init {
-        getMembersDetails()
+        database = MemberDatabase.getInstance().memberDatabaseDao
     }
 
-    private fun getMembersDetails() {
-        viewModelScope.launch {
-           // member.value = getMemberFromDatabase()
-        }
+
+    //get the member
+    fun getMembersDetail(personNumber:Int) {
+        _memberDetails = database.getMemberDetails(personNumber)
     }
+
 
     /**
      * Variable that tells the fragment whether it should navigate to ListMembersFragment.
@@ -42,18 +48,18 @@ class MembersDetailViewModel(private val personNumber: MemberOfParliamentDao,
     private val _navigateToListMembers = MutableLiveData<Boolean?>()
 
 
-     //When true immediately navigate back to the ListMembersFragment
+    //When true immediately navigate back to the ListMembersFragment
 
     val navigateToListMembersFragment: LiveData<Boolean?>
-    get() = _navigateToListMembers
+        get() = _navigateToListMembers
 
 
-     //When the navigation is done
-     fun doneNavigating(){
-         _navigateToListMembers.value = null
-     }
+    //When the navigation is done
+    fun doneNavigating() {
+        _navigateToListMembers.value = null
+    }
 
-    fun onClose(){
+    fun onClose() {
         _navigateToListMembers.value = true
     }
 }

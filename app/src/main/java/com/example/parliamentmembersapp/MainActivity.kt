@@ -16,11 +16,11 @@ class MainActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.Default).launch {
             val db = MemberDatabase.getInstance()
-            db.memberDatabseDao.clear()
+            db.memberDatabaseDao.clearTable()
 
             val dataSrc = ParliamentApi.retrofitService.getParliamentMembers()
             for (item in dataSrc) {
-                db.memberDatabseDao.insert(item)
+                db.memberDatabaseDao.insert(item)
             }
         }
     }

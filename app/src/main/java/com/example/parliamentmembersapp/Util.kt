@@ -5,9 +5,14 @@ import android.os.Build
 import android.text.Html
 import android.text.Spanned
 import com.example.parliamentmembersapp.database.MemberOfParliament
+import java.util.*
 
 fun setFullName(item: MemberOfParliament) : String {
     return "${item.first} ${item.last}"
+}
+
+fun setAge(item: MemberOfParliament): String {
+    return "Age: ${(Calendar.getInstance().get(Calendar.YEAR) - item.bornYear).toString()}"
 }
 
 fun formatMembers(members: List<MemberOfParliament>, resources: Resources): Spanned {

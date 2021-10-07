@@ -16,8 +16,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.parliamentmembersapp.database.MemberDatabase
 import com.example.parliamentmembersapp.databinding.FragmentListMembersBinding
-import com.example.parliamentmembersapp.members_detail.MembersDetailFragment
-import com.example.parliamentmembersapp.members_detail.MembersDetailFragmentArgs
 
 class ListMembersFragment : Fragment() {
 
@@ -31,7 +29,7 @@ class ListMembersFragment : Fragment() {
     ): View? {
         val binding = FragmentListMembersBinding.inflate(inflater)
         val application = requireNotNull(this.activity).application
-        val dataSource = MemberDatabase.getInstance().memberDatabseDao
+        val dataSource = MemberDatabase.getInstance().memberDatabaseDao
         val viewModelFactory = ListMembersViewModelFactory(dataSource, application)
         val listMembersViewModel: ListMembersViewModel by lazy {
             ViewModelProvider(this, viewModelFactory).get(ListMembersViewModel::class.java)
