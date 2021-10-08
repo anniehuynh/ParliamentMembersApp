@@ -1,4 +1,4 @@
-package com.example.parliamentmembersapp.member_list
+package com.example.parliamentmembersapp.screen.member_list
 
 /**
  *  List Member Fragment that will show list of members
@@ -55,8 +55,9 @@ class ListMembersFragment : Fragment() {
         listMembersViewModel.navigateToMembersDetail.observe(viewLifecycleOwner, { personNumber ->
             personNumber?.let {
                 this.findNavController().navigate(
-                    ListMembersFragmentDirections
-                        .actionListMembersFragmentToMembersDetailFragment(personNumber)
+                    ListMembersFragmentDirections.actionListMembersFragmentToMembersDetailFragment(
+                        personNumber
+                    )
                 )
                 listMembersViewModel.onMembersDetailNavigated()
             }

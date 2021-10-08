@@ -15,13 +15,13 @@ class MemberRepository {
 
     fun getAll(): LiveData<List<MemberOfParliament>> = memberDao.getAllMembers()
 
-    suspend fun getMemberDetails(personNumber: Int): LiveData<MemberOfParliament> =
-        memberDao.getMemberDetails(personNumber)
+    fun insert(member:MemberOfParliament) = memberDao.insert(member)
 
-    suspend fun insert(member: MemberOfParliament) = memberDao.insert(member)
+    fun getMemberDetails(personNumber: Int) = memberDao.getMemberDetails(personNumber)
 
-
-
+    //fun getRating(personNumber: Int) = memberDao.getMembersRating(personNumber)
 
 
 }
+
+

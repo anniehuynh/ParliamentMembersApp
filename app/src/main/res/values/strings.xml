@@ -7,4 +7,6 @@
     <string name="leave_your_comment_here">Leave your comment here</string>
     <string name="minister">Minister</string>
     <string name="member_of_parliament">Member of Parliament</string>
+    <string name="submit">Submit</string>
+    <string name="rating">Average rating points: %1$.1f</string>
 </resources>

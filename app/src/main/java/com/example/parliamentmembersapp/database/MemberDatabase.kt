@@ -10,7 +10,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.parliamentmembersapp.MyApp
 
-@Database(entities = [MemberOfParliament::class], version = 1, exportSchema = false)
+@Database(entities = [MemberOfParliament::class, Rating::class, Comment::class],
+    version = 1, exportSchema = false)
 abstract class MemberDatabase: RoomDatabase() {
     abstract val memberDatabaseDao: MemberOfParliamentDao
 
@@ -25,7 +26,7 @@ abstract class MemberDatabase: RoomDatabase() {
                     instance = Room.databaseBuilder(
                         MyApp.appContext,
                         MemberDatabase::class.java,
-                        "member_database"
+                        "member_database",
                     ).fallbackToDestructiveMigration().build()
                     INSTANCE = instance
                 }
@@ -33,5 +34,6 @@ abstract class MemberDatabase: RoomDatabase() {
                 return instance
             }
         }
+
     }
 }

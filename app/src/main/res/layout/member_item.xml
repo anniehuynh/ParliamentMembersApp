@@ -8,7 +8,7 @@
             type="com.example.parliamentmembersapp.database.MemberOfParliament" />
         <variable
             name="clickListener"
-            type="com.example.parliamentmembersapp.member_list.MemberListener" />
+            type="com.example.parliamentmembersapp.screen.member_list.MemberListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

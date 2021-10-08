@@ -20,7 +20,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             tools:src="@tools:sample/avatars" />
 
 
@@ -29,7 +29,7 @@
             android:id="@+id/name"
             style="@style/General"
             android:text="@{member.first + ' ' + member.last}"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:fontFamily="sans-serif-condensed-medium"
             />
 
@@ -37,71 +37,62 @@
             android:id="@+id/age"
             android:text="@{String.valueOf(member.bornYear)}"
             style="@style/General"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:fontFamily="sans-serif-condensed-medium"
              />
 
         <TextView
             android:id="@+id/position"
             style="@style/General"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:fontFamily="cursive"
             android:text="@{member.minister ? @string/minister : @string/member_of_parliament}" />
 
         <TextView
             android:id="@+id/constituency"
             style="@style/General"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:fontFamily="casual"
             android:text="@{member.constituency}" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"/>
 
-            <Button
-                android:id="@+id/likeBtn"
-                style="@style/Button"
-                android:layout_gravity="center"
-                android:layout_marginStart="40dp"
-                android:fontFamily="sans-serif-smallcaps"
-                android:padding="10dp"
-                android:text="+"
-                android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/dislikeBtn"
-                style="@style/Button"
-                android:layout_gravity="center"
-                android:layout_marginStart="130dp"
-                android:fontFamily="sans-serif-smallcaps"
-                android:padding="10dp"
-                android:text="-"
-                android:textSize="20sp" />
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/averageRate"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rating"
+            android:layout_gravity="center"
+            android:textColor="@color/background_dark"
+            android:textStyle="italic"/>
         <EditText
             android:id="@+id/commentBox"
             android:layout_width="350dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:layout_marginTop="35dp"
+            android:gravity="top"
+            android:layout_marginTop="10dp"
             android:background="@drawable/comment_box"
             android:hint="@string/leave_your_comment_here"
+            android:inputType="textMultiLine"
+            android:maxLines="5"
             android:paddingLeft="10dp">
 
         </EditText>
 
         <Button
-            android:id="@+id/backToListBtn"
+            android:id="@+id/submitBtn"
             style="@style/Button"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:fontFamily="sans-serif-smallcaps"
             android:padding="10dp"
-            android:text="Back to Member List"
+            android:text="@string/submit"
             android:textSize="20sp"
             android:textStyle="bold" />
 

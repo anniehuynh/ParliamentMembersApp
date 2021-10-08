@@ -1,9 +1,8 @@
-package com.example.parliamentmembersapp.member_list
+package com.example.parliamentmembersapp.screen.member_list
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.parliamentmembersapp.database.MemberOfParliament
-import com.example.parliamentmembersapp.setAge
 import com.example.parliamentmembersapp.setFullName
 
 /**

@@ -1,4 +1,4 @@
-package com.example.parliamentmembersapp.member_list
+package com.example.parliamentmembersapp.screen.member_list
 
 /**
  * ListMembersViewModel

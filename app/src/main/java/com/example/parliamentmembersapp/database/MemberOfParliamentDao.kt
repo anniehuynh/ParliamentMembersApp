@@ -11,7 +11,7 @@ import androidx.room.*
 @Dao
 interface MemberOfParliamentDao {
     @Insert (onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(member: MemberOfParliament)
+    fun insert(member: MemberOfParliament)
 
     @Update
     suspend fun updateMember(member: MemberOfParliament)
@@ -30,5 +30,17 @@ interface MemberOfParliamentDao {
 
     @Query("SELECT * FROM members_of_parliament_table ORDER BY personNumber DESC LIMIT 1")
     suspend fun getOneMember(): MemberOfParliament?
+
+    @Insert
+    suspend fun insertComment(comment: Comment)
+
+    @Query("SELECT * FROM member_comment_table WHERE personNumber = :personNumber")
+    fun getComment(personNumber: Int): LiveData<List<Comment>>
+
+    @Insert
+    suspend fun insertRating(rate: Rating)
+
+    @Query("SELECT member_rating FROM member_rating_table WHERE personNumber = :personNumber")
+    fun getMembersRating(personNumber: Int): LiveData<List<Double>>
 
 }
