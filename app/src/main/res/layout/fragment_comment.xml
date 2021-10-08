@@ -11,16 +11,17 @@
         <TextView
             android:id="@+id/commentText"
             style="@style/General"
-            android:fontFamily="casual"
-            android:text="@string/all_comment_for_this_member"
             android:layout_marginTop="20dp"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="@string/all_comment_for_this_member"
             android:textColor="@color/text_color"
             app:layout_constraintBottom_toTopOf="@+id/commentList"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.307" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/commentList"
@@ -30,7 +31,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.77" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

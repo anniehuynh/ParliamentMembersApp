@@ -10,6 +10,7 @@ import android.widget.RatingBar
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -74,6 +75,13 @@ class MembersDetailFragment : Fragment() {
                     .into(binding.memberImage)
             }
         })
+
+        /**
+         * onClickListner
+         */
+        binding.seeComments.setOnClickListener{view: View ->
+            view.findNavController().navigate(R.id.action_membersDetailFragment_to_commentFragment)
+        }
         //submit btn
         binding.submitBtn.setOnClickListener{
             val rates = ratingBar.rating
@@ -98,6 +106,7 @@ class MembersDetailFragment : Fragment() {
                 getString(R.string.rating, rate)
 
         })
+
 
         //navigate to see all comment fragment
         memberDetailsViewModel.toComment.observe(viewLifecycleOwner, { toComment ->
