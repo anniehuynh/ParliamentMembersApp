@@ -9,4 +9,7 @@
     <string name="member_of_parliament">Member of Parliament</string>
     <string name="submit">Submit</string>
     <string name="rating">Average rating points: %1$.1f</string>
+    <string name="all_comment_for_this_member">All Comment for this member</string>
+    <string name="see_comments"><u>See Comments</u></string>
+    <string name="age">Age: %1$d</string>
 </resources>

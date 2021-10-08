@@ -25,5 +25,17 @@
         <action
             android:id="@+id/action_membersDetailFragment_to_listMembersFragment"
             app:destination="@id/listMembersFragment" />
+        <action
+            android:id="@+id/action_membersDetailFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.example.parliamentmembersapp.screen.comment.CommentFragment"
+        android:label="CommentFragment"
+        tools:layout="@layout/fragment_comment">
+        <argument
+            android:name="personNumber"
+            app:argType="integer" />
     </fragment>
 </navigation>

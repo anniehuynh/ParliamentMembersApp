@@ -39,7 +39,7 @@ class ListMembersFragment : Fragment() {
          * Allows Binding to Observe this fragment
          */
         val adapter = MemberAdapter(MemberListener { personNumber ->
-            Toast.makeText(context, "$personNumber", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Member id: $personNumber", Toast.LENGTH_LONG).show()
             listMembersViewModel.onMemberNameClicked(personNumber)
         })
         // put the new list to adapter
@@ -62,8 +62,7 @@ class ListMembersFragment : Fragment() {
                 listMembersViewModel.onMembersDetailNavigated()
             }
         })
-        //val args = MembersDetailFragmentArgs.fromBundle(requireArguments())
-        //Toast.makeText(context, "Member: ${args.personNumber}", Toast.LENGTH_LONG).show()
+
         binding.lifecycleOwner = this
         return binding.root
     }

@@ -10,12 +10,14 @@ import android.widget.RatingBar
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.parliamentmembersapp.R
 import com.example.parliamentmembersapp.databinding.FragmentMembersDetailBinding
 import kotlinx.android.synthetic.main.fragment_members_detail.view.*
+import java.util.*
 
 
 /**
@@ -26,6 +28,7 @@ import kotlinx.android.synthetic.main.fragment_members_detail.view.*
 class MembersDetailFragment : Fragment() {
 
     private lateinit var memberDetailsViewModel: MembersDetailViewModel
+    private val currentYear = Calendar.getInstance().get(Calendar.YEAR)
     private val args: MembersDetailFragmentArgs by navArgs()
 
 
@@ -61,6 +64,7 @@ class MembersDetailFragment : Fragment() {
             newMember?.let {
                 //update new member
                 binding.member = newMember
+                binding.age.text =getString(R.string.age, currentYear - newMember.bornYear)
 
                 //Using Glide to display image
                 Glide
@@ -91,10 +95,21 @@ class MembersDetailFragment : Fragment() {
 
         //display average rating points
         memberDetailsViewModel.averageRating.observe(viewLifecycleOwner,{rate ->
-            binding.averageRate.text = getString(R.string.rating, rate)
+            binding.averageRate.text = if(rate == null) "Average Rating: " else
+                getString(R.string.rating, rate)
+
         })
 
-
+        //navigate to see all comment fragment
+        memberDetailsViewModel.toComment.observe(viewLifecycleOwner, { toComment ->
+            if(toComment) {
+                this.findNavController()
+                    .navigate(MembersDetailFragmentDirections
+                        .actionMembersDetailFragmentToCommentFragment(args.personNumber)
+                    )
+                memberDetailsViewModel.onCommentNavigated()
+            }
+        })
 
         return binding.root
     }

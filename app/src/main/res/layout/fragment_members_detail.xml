@@ -23,35 +23,33 @@
             android:layout_marginTop="30dp"
             tools:src="@tools:sample/avatars" />
 
-
-
         <TextView
             android:id="@+id/name"
             style="@style/General"
             android:text="@{member.first + ' ' + member.last}"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed-medium"
             />
 
         <TextView
             android:id="@+id/age"
-            android:text="@{String.valueOf(member.bornYear)}"
+            android:text="@string/age"
             style="@style/General"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed-medium"
              />
 
         <TextView
             android:id="@+id/position"
             style="@style/General"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="cursive"
             android:text="@{member.minister ? @string/minister : @string/member_of_parliament}" />
 
         <TextView
             android:id="@+id/constituency"
             style="@style/General"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="casual"
             android:text="@{member.constituency}" />
 
@@ -59,6 +57,7 @@
             android:id="@+id/ratingBar"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:numStars="5"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"/>
 
@@ -66,6 +65,7 @@
             android:id="@+id/averageRate"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:textSize="18dp"
             android:text="@string/rating"
             android:layout_gravity="center"
             android:textColor="@color/background_dark"
@@ -85,11 +85,22 @@
 
         </EditText>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/text_color"
+            android:fontFamily="casual"
+            android:clickable="true"
+            android:textSize="18dp"
+            android:text="@string/see_comments"/>
         <Button
             android:id="@+id/submitBtn"
             style="@style/Button"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="sans-serif-smallcaps"
             android:padding="10dp"
             android:text="@string/submit"

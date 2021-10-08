@@ -23,15 +23,18 @@ class MembersDetailViewModel() : ViewModel() {
     private val repository = MemberRepository()
     private val database: MemberOfParliamentDao = MemberDatabase.getInstance().memberDatabaseDao
 
-    private val _averageRating = MutableLiveData<Double>()
-    val averageRating: LiveData<Double>
-        get() = _averageRating
 
 
     //comment
     private lateinit var _memberComments: LiveData<List<Comment>>
     val memberComments: LiveData<List<Comment>>
         get() = _memberComments
+
+    //average
+    private val _averageRating = MutableLiveData<Double>()
+    val averageRating: LiveData<Double>
+        get() = _averageRating
+
     //rating
     private lateinit var _rate: LiveData<List<Double>>
     val rate: LiveData<List<Double>>
@@ -78,6 +81,22 @@ class MembersDetailViewModel() : ViewModel() {
         if (ratings.isNotEmpty()) {
             _averageRating.value = ratings.average()
         } else _averageRating.value = 0.0
+    }
+
+    /**
+     * navigate to see all comments
+     */
+
+    private val _toComments = MutableLiveData<Boolean>()
+    val toComment: LiveData<Boolean>
+        get() = _toComments
+
+    fun navigateToComment(){
+        _toComments.value = true
+    }
+
+    fun onCommentNavigated(){
+        _toComments.value = false
     }
 
 }
