@@ -1,7 +1,6 @@
 package com.example.parliamentmembersapp.screen.member_detail
 
-import android.os.Build
-import androidx.annotation.RequiresApi
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,10 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.parliamentmembersapp.database.*
 import com.example.parliamentmembersapp.repository.MemberRepository
 import kotlinx.coroutines.launch
-import java.util.*
-import java.util.Calendar
 
-enum class MembersApiStatus { LOADING, ERROR, DONE }
+
 
 /**
  * ViewModel for MembersDetailFragment
@@ -80,7 +77,7 @@ class MembersDetailViewModel() : ViewModel() {
     fun averageRating(ratings: List<Double>) {
         if (ratings.isNotEmpty()) {
             _averageRating.value = ratings.average()
-        } else _averageRating.value = 0.0
+        } else _averageRating.value = null
     }
 
     /**
@@ -90,10 +87,6 @@ class MembersDetailViewModel() : ViewModel() {
     private val _toComments = MutableLiveData<Boolean>()
     val toComment: LiveData<Boolean>
         get() = _toComments
-
-    fun navigateToComment(){
-        _toComments.value = true
-    }
 
     fun onCommentNavigated(){
         _toComments.value = false

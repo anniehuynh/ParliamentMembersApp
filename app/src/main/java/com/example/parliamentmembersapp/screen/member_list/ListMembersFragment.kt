@@ -26,7 +26,7 @@ class ListMembersFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentListMembersBinding.inflate(inflater)
         val application = requireNotNull(this.activity).application
         val dataSource = MemberDatabase.getInstance().memberDatabaseDao
@@ -39,7 +39,7 @@ class ListMembersFragment : Fragment() {
          * Allows Binding to Observe this fragment
          */
         val adapter = MemberAdapter(MemberListener { personNumber ->
-            Toast.makeText(context, "Member id: $personNumber", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Member id: $personNumber", Toast.LENGTH_SHORT).show()
             listMembersViewModel.onMemberNameClicked(personNumber)
         })
         // put the new list to adapter

@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+
 import android.widget.RatingBar
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -16,7 +16,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.parliamentmembersapp.R
 import com.example.parliamentmembersapp.databinding.FragmentMembersDetailBinding
-import kotlinx.android.synthetic.main.fragment_members_detail.view.*
 import java.util.*
 
 
@@ -33,15 +32,15 @@ class MembersDetailFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
 
         val binding = DataBindingUtil.inflate<FragmentMembersDetailBinding>(inflater,
             R.layout.fragment_members_detail,container,false)
 
         val personNumber = args.personNumber
 
-        var ratingBar: RatingBar = binding.ratingBar
-        var comments = binding.commentBox
+        val ratingBar: RatingBar = binding.ratingBar
+        val comments = binding.commentBox
 
 
         //Fragment view as lifeCycle owner
@@ -76,7 +75,7 @@ class MembersDetailFragment : Fragment() {
             }
         })
         //submit btn
-        binding.submitBtn.setOnClickListener{view: View ->
+        binding.submitBtn.setOnClickListener{
             val rates = ratingBar.rating
             val comment = comments.text.toString()
             Toast.makeText(context, "Successfully Submit Rating", Toast.LENGTH_LONG).show()

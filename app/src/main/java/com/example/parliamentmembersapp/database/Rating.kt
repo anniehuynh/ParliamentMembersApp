@@ -18,5 +18,5 @@ data class Rating(
     val personNumber: Int,
 
     @ColumnInfo(name = "member_rating")
-    val rating: Float = 0F,
+    val rating: Float,
 )
