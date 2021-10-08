@@ -13,12 +13,6 @@ interface MemberOfParliamentDao {
     @Insert (onConflict = OnConflictStrategy.REPLACE)
     fun insert(member: MemberOfParliament)
 
-    @Update
-    suspend fun updateMember(member: MemberOfParliament)
-
-    @Query("SELECT * FROM members_of_parliament_table WHERE personNumber = :personNumber")
-    suspend fun getMember(personNumber: Int) : MemberOfParliament
-
     @Query("SELECT * FROM members_of_parliament_table WHERE personNumber = :personNumber")
     fun getMemberDetails(personNumber: Int) : LiveData<MemberOfParliament>
 

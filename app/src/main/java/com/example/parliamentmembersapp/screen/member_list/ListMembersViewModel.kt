@@ -19,19 +19,16 @@ import com.example.parliamentmembersapp.repository.MemberRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class ListMembersViewModel(
-    dataSource: MemberOfParliamentDao,
-    application: Application
-) : ViewModel() {
+class ListMembersViewModel: ViewModel() {
+    private val repository = MemberRepository()
 
-    val database = dataSource
 
     //viewModelJob that allows cancelling the coroutines started by this ViewModel
     private val viewModelJob = Job()
 
     private var displayMember = MutableLiveData<MemberOfParliament>()
 
-    var members = database.getAllMembers()
+    var members = repository.getAllMember()
 
     init {
         getMembersDetails()
@@ -39,11 +36,9 @@ class ListMembersViewModel(
 
     private fun getMembersDetails() {
         viewModelScope.launch {
-            displayMember.value = getMemberFromDatabase()
+            displayMember.value = repository.getMemberFromDatabase()
         }
     }
-
-    private suspend fun getMemberFromDatabase(): MemberOfParliament? = database.getOneMember()
 
 
     override fun onCleared() {

@@ -10,17 +10,13 @@ import com.example.parliamentmembersapp.repository.MemberRepository
 import kotlinx.coroutines.launch
 
 
-
 /**
  * ViewModel for MembersDetailFragment
  * by An Huynh
  * on 4/10/2021.
  */
-class MembersDetailViewModel() : ViewModel() {
+class MembersDetailViewModel : ViewModel() {
     private val repository = MemberRepository()
-    private val database: MemberOfParliamentDao = MemberDatabase.getInstance().memberDatabaseDao
-
-
 
     //comment
     private lateinit var _memberComments: LiveData<List<Comment>>
@@ -50,27 +46,28 @@ class MembersDetailViewModel() : ViewModel() {
 
     //get the member
     fun getMembersDetail(personNumber: Int) {
-        _memberDetails = database.getMemberDetails(personNumber)
+        _memberDetails = repository.getMemberDetails(personNumber)
     }
 
     //use coroutine to update rating
     fun addRatingAndComment(personNumber: Int, rating: Float, comment: String) {
         viewModelScope.launch {
-            database.insertRating(Rating(personNumber = personNumber, rating = rating))
+            repository.insertRating(Rating(personNumber = personNumber, rating = rating))
 
-            if(comment.isNotEmpty()){
-                database.insertComment(Comment(personNumber = personNumber, comment = comment))
+            if (comment.isNotEmpty()) {
+                repository.insertComment(Comment(personNumber = personNumber, comment = comment))
             }
         }
     }
 
     //insert comments
-    fun getComments(personNumber: Int){
-        _memberComments = database.getComment(personNumber)
+    fun getComments(personNumber: Int) {
+        _memberComments = repository.getComment(personNumber)
     }
+
     //get rating
     fun getRating(personNumber: Int) {
-        _rate = database.getMembersRating(personNumber)
+        _rate = repository.getRating(personNumber)
     }
 
     //Calculate rating average
@@ -88,7 +85,7 @@ class MembersDetailViewModel() : ViewModel() {
     val toComment: LiveData<Boolean>
         get() = _toComments
 
-    fun onCommentNavigated(){
+    fun onCommentNavigated() {
         _toComments.value = false
     }
 
