@@ -6,18 +6,18 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#040404</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#D6E1D6</color>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#7e53c5</color>
     <color name="red">#DCA7A7</color>
-    <color name="light_color">#fbf4ed</color>
-    <color name="light_color2">#f7cbbc</color>
-    <color name="mint">#e7f9f4</color>
-    <color name="carrot">#ea9478</color>
-    <color name="carrot2">#ff857e</color>
-    <color name="text_color">#983948</color>
-    <color name="text_color2">#8E3845</color>
+    <color name="light_color">#127680</color>
+    <color name="btnBackground">#50A190</color>
+    <color name="btn">#e7f9f4</color>
+    <color name="carrot">#6889A0</color>
+    <color name="carrot2">#242935</color>
+    <color name="text_color">#173049</color>
+    <color name="text_color2">#2D3247</color>
     <color name="background_dark">#c07429</color>
-    <color name="background_color">#f8e2d7</color>
+    <color name="background_color">#328793</color>
 </resources>

@@ -68,7 +68,7 @@
             android:textSize="18sp"
             android:text="@string/rating"
             android:layout_gravity="center"
-            android:textColor="@color/background_dark"
+            android:textColor="@color/text_color"
             android:textStyle="italic"/>
         <EditText
             android:id="@+id/commentBox"
@@ -93,7 +93,8 @@
             android:layout_gravity="end"
             android:layout_marginEnd="30dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/text_color"
+            android:textColor="@color/background_color"
+            android:textStyle="bold"
             android:fontFamily="casual"
             android:clickable="true"
             android:textSize="18sp"
