@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">ParliamentMembersApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Member of Parliament application</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="full_name"><![CDATA[<b></b>]]></string>
     <string name="list_of_members">List of Members</string>
@@ -13,4 +12,5 @@
     <string name="see_comments"><u>See Comments</u></string>
     <string name="age">Age: %1$d</string>
     <string name="contentDescription">TODO</string>
+    <string name="content">Content</string>
 </resources>

@@ -17,8 +17,6 @@ data class Comment(
     @ColumnInfo
     val personNumber: Int,
 
-
-    //comment
     @ColumnInfo (name = "comment")
     val comment: String,
 )

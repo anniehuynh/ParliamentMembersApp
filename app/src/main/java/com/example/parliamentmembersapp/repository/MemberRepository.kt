@@ -1,7 +1,8 @@
 package com.example.parliamentmembersapp.repository
 
 /**
- * Repository
+ * Repository which acts as the intermediary between database and viewmodel
+ * All the functions named according to what they will do
  * by An Huynh
  * on 4/10/2021
  */
@@ -12,7 +13,15 @@ import com.example.parliamentmembersapp.database.MemberOfParliament
 import com.example.parliamentmembersapp.database.Rating
 
 class MemberRepository {
+
     private val memberDao = MemberDatabase.getInstance().memberDatabaseDao
+
+    fun insert(member: MemberOfParliament) = memberDao.insert(member)
+
+    suspend fun clearRating() = memberDao.clearRating()
+
+    suspend fun clearComment() = memberDao.clearComment()
+
     suspend fun insertRating(rate: Rating) = memberDao.insertRating(rate)
 
     suspend fun insertComment(comment: Comment) = memberDao.insertComment(comment)

@@ -1,7 +1,7 @@
 package com.example.parliamentmembersapp.screen.member_list
 
 /**
- * MemberAdapter class
+ * MemberAdapter class for RecyclerView
  * by An Huynh
  * on 3/10/2021
  */

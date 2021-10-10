@@ -5,20 +5,33 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.parliamentmembersapp.database.MemberOfParliament
+import com.example.parliamentmembersapp.database.Comment
 import com.example.parliamentmembersapp.databinding.CommentItemBinding
-import com.example.parliamentmembersapp.databinding.MemberItemBinding
 
-class CommentAdapter : ListAdapter<MemberOfParliament, CommentAdapter.ViewHolder>(
-MemberOfParliamentDiffCallBack()
-) {
+/**
+ * CommentAdapter for Comment Recyclerview
+ * by An Huynh
+ * on 8/10/2021
+ */
+class CommentAdapter : ListAdapter<Comment, CommentAdapter.ViewHolder>(
+CommentDiffCallBack())
+ {
+     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+         return ViewHolder.from(parent)
+     }
+
+     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+         holder.bind(getItem(position))
+     }
+
     class ViewHolder private constructor(private val binding: CommentItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         // Update ViewModel to use data binding to bind the data
-        fun bind(item: MemberOfParliament) {
-            binding.member = item
-            //binding.clickListener = clickListener
+        fun bind(comment: Comment) {
+            binding.commentData = comment
+            binding.commentText.text = comment.comment
             binding.executePendingBindings()
         }
 
@@ -31,27 +44,17 @@ MemberOfParliamentDiffCallBack()
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
-    }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
-    }
 }
-
-class MemberOfParliamentDiffCallBack : DiffUtil.ItemCallback<MemberOfParliament>() {
+class CommentDiffCallBack : DiffUtil.ItemCallback<Comment>() {
     override fun areItemsTheSame(
-        oldItem: MemberOfParliament,
-        newItem: MemberOfParliament
+        oldItem: Comment,
+        newItem: Comment
     ): Boolean {
-        return oldItem.personNumber == newItem.personNumber
+        return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(
-        oldItem: MemberOfParliament,
-        newItem: MemberOfParliament
-    ): Boolean {
+    override fun areContentsTheSame(oldItem: Comment, newItem: Comment): Boolean {
         return oldItem == newItem
     }
 }

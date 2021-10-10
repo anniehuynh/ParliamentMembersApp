@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
-            name="member"
-            type="com.example.parliamentmembersapp.database.MemberOfParliament" />
+            name="commentData"
+            type="com.example.parliamentmembersapp.database.Comment" />
 
     </data>
 
@@ -18,12 +19,12 @@
             android:id="@+id/comment_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
             android:layout_marginStart="25dp"
             android:gravity="start"
-            android:textSize="18sp"
+            android:padding="5dp"
+            android:text="@string/content"
             android:textColor="@color/text_color2"
-            android:text="Content"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

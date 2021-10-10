@@ -5,13 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import android.widget.RatingBar
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -34,12 +32,14 @@ class MembersDetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-
+        //inflating the layout
         val binding = DataBindingUtil.inflate<FragmentMembersDetailBinding>(inflater,
             R.layout.fragment_members_detail,container,false)
 
+        //getting argument at the destination
         val personNumber = args.personNumber
 
+        //binding the ratingBar and commentBox in xml layout
         val ratingBar: RatingBar = binding.ratingBar
         val comments = binding.commentBox
 
@@ -57,13 +57,14 @@ class MembersDetailFragment : Fragment() {
         memberDetailsViewModel.getRating(personNumber)
 
         //get comments
-        memberDetailsViewModel.getComments(personNumber)
+       // memberDetailsViewModel.getComments(personNumber)
 
         //Observe Member details
         memberDetailsViewModel.memberDetails.observe(viewLifecycleOwner, { newMember ->
             newMember?.let {
                 //update new member
                 binding.member = newMember
+                //display member's age
                 binding.age.text =getString(R.string.age, currentYear - newMember.bornYear)
 
                 //Using Glide to display image
@@ -76,24 +77,6 @@ class MembersDetailFragment : Fragment() {
             }
         })
 
-        /**
-         * onClickListner
-         */
-        binding.seeComments.setOnClickListener{view: View ->
-            view.findNavController().navigate(R.id.action_membersDetailFragment_to_commentFragment)
-        }
-        //submit btn
-        binding.submitBtn.setOnClickListener{
-            val rates = ratingBar.rating
-            val comment = comments.text.toString()
-            Toast.makeText(context, "Successfully Submit Rating", Toast.LENGTH_LONG).show()
-            memberDetailsViewModel.addRatingAndComment(personNumber, rates, comment)
-        }
-
-        //update comments
-        memberDetailsViewModel.memberComments.observe(viewLifecycleOwner, {
-            memberDetailsViewModel.getComments(personNumber)
-        })
 
         //update rating and calculate average rate
         memberDetailsViewModel.rate.observe(viewLifecycleOwner, {
@@ -106,18 +89,19 @@ class MembersDetailFragment : Fragment() {
                 getString(R.string.rating, rate)
 
         })
+        //submit btn
+        binding.submitBtn.setOnClickListener{
+            val rates = ratingBar.rating
+            val comment = comments.text.toString()
+            Toast.makeText(context, "Rating submitted $rates", Toast.LENGTH_LONG).show()
+            memberDetailsViewModel.addRatingAndComment(personNumber, rates, comment)
+        }
 
-
-        //navigate to see all comment fragment
-        memberDetailsViewModel.toComment.observe(viewLifecycleOwner, { toComment ->
-            if(toComment) {
-                this.findNavController()
-                    .navigate(MembersDetailFragmentDirections
-                        .actionMembersDetailFragmentToCommentFragment(args.personNumber)
-                    )
-                memberDetailsViewModel.onCommentNavigated()
-            }
-        })
+        //When the See Comment TextView is click, navigate to Comment Fragment
+        binding.seeComments.setOnClickListener{view: View ->
+            view.findNavController().navigate(MembersDetailFragmentDirections
+                .actionMembersDetailFragmentToCommentFragment(personNumber))
+        }
 
         return binding.root
     }

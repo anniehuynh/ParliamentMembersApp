@@ -4,22 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.parliamentmembersapp.screen.member_list.ListMembersViewModel" />
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.member_list.ListMembersFragment"
-        android:backgroundTint="@color/white">
+        android:backgroundTint="@color/white"
+        tools:context=".screen.member_list.ListMembersFragment">
 
         <TextView
             android:id="@+id/appText"
             style="@style/General"
+            android:layout_marginTop="20dp"
             android:fontFamily="casual"
             android:text="@string/list_of_members"
-            android:layout_marginTop="20dp"
             android:textColor="@color/text_color"
             app:layout_constraintBottom_toTopOf="@+id/memberList"
             app:layout_constraintEnd_toEndOf="parent"

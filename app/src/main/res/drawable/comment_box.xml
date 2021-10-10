@@ -1,8 +1,10 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
+    <!--a rectangle shape for comment box-->
+
     <solid android:color="#EBF3F1" />
-    <stroke android:width="2.5dp"
+    <stroke
+        android:width="2.5dp"
         android:color="@color/btnBackground" />
-    <corners
-        android:radius="5dp"/>
+    <corners android:radius="5dp" />
 </shape>

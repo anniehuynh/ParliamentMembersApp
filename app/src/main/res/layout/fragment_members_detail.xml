@@ -4,9 +4,11 @@
     tools:context=".MemberFragment">
 
     <data>
+
         <variable
             name="member"
             type="com.example.parliamentmembersapp.database.MemberOfParliament" />
+
         <variable
             name="viewModel"
             type="com.example.parliamentmembersapp.screen.member_detail.MembersDetailViewModel" />
@@ -23,24 +25,22 @@
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            tools:src="@tools:sample/avatars"
-            android:contentDescription="@string/contentDescription" />
+            android:contentDescription="@string/contentDescription"
+            tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/name"
             style="@style/General"
-            android:text="@{member.first + ' ' + member.last}"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed-medium"
-            />
+            android:text="@{member.first + ' ' + member.last}" />
 
         <TextView
             android:id="@+id/age"
-            android:text="@string/age"
             style="@style/General"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed-medium"
-             />
+            android:text="@string/age" />
 
         <TextView
             android:id="@+id/position"
@@ -60,29 +60,30 @@
             android:id="@+id/ratingBar"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:numStars="5"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:numStars="5" />
 
         <TextView
             android:id="@+id/averageRate"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="@string/rating"
             android:layout_gravity="center"
+            android:text="@string/rating"
             android:textColor="@color/text_color"
-            android:textStyle="italic"/>
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
         <EditText
             android:id="@+id/commentBox"
             android:layout_width="350dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:gravity="top"
             android:layout_marginTop="10dp"
-            android:background="@drawable/comment_box"
-            android:hint="@string/leave_your_comment_here"
             android:autofillHints=""
+            android:background="@drawable/comment_box"
+            android:gravity="top"
+            android:hint="@string/leave_your_comment_here"
             android:inputType="textMultiLine"
             android:maxLines="5"
             android:paddingStart="10dp"
@@ -95,15 +96,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginEnd="30dp"
             android:layout_marginTop="10dp"
-            android:textColor="@color/background_color"
-            android:textStyle="bold"
-            android:fontFamily="casual"
+            android:layout_marginEnd="30dp"
             android:clickable="true"
-            android:textSize="18sp"
+            android:focusable="true"
+            android:fontFamily="casual"
             android:text="@string/see_comments"
-            android:focusable="true" />
+            android:textColor="@color/background_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
         <Button
             android:id="@+id/submitBtn"
             style="@style/Button"

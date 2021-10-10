@@ -14,8 +14,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.parliamentmembersapp.database.MemberDatabase
 import com.example.parliamentmembersapp.databinding.FragmentListMembersBinding
+
 
 class ListMembersFragment : Fragment() {
 
@@ -28,12 +28,12 @@ class ListMembersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentListMembersBinding.inflate(inflater)
-        val application = requireNotNull(this.activity).application
-        val dataSource = MemberDatabase.getInstance().memberDatabaseDao
-        val viewModelFactory = ListMembersViewModelFactory(dataSource, application)
-        val listMembersViewModel: ListMembersViewModel by lazy {
-            ViewModelProvider(this, viewModelFactory).get(ListMembersViewModel::class.java)
-        }
+
+        val listMembersViewModel = ViewModelProvider(this, ListMembersViewModelFactory())
+            .get(ListMembersViewModel::class.java)
+
+        //Bind ViewModel with viewModel data in xml
+        binding.viewModel = listMembersViewModel
 
         /**
          * Allows Binding to Observe this fragment
@@ -42,9 +42,11 @@ class ListMembersFragment : Fragment() {
             Toast.makeText(context, "Member id: $personNumber", Toast.LENGTH_SHORT).show()
             listMembersViewModel.onMemberNameClicked(personNumber)
         })
+
         // put the new list to adapter
         binding.memberList.adapter = adapter
-        binding.viewModel = listMembersViewModel
+
+        //Observe changes of the member LiveData
         listMembersViewModel.members.observe(viewLifecycleOwner, {
             it?.let {
                 adapter.submitList(it)

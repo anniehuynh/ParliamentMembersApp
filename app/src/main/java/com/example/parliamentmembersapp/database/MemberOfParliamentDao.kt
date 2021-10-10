@@ -19,8 +19,8 @@ interface MemberOfParliamentDao {
     @Query("SELECT * FROM members_of_parliament_table ORDER BY first_name ASC")
     fun getAllMembers() : LiveData<List<MemberOfParliament>>
 
-    @Query("DELETE FROM members_of_parliament_table")
-    suspend fun clearTable()
+    @Query("DELETE FROM member_rating_table")
+    suspend fun clearRating()
 
     @Query("SELECT * FROM members_of_parliament_table ORDER BY personNumber DESC LIMIT 1")
     suspend fun getOneMember(): MemberOfParliament?
@@ -31,6 +31,8 @@ interface MemberOfParliamentDao {
     @Query("SELECT * FROM member_comment_table WHERE personNumber = :personNumber")
     fun getComment(personNumber: Int): LiveData<List<Comment>>
 
+    @Query("DELETE FROM member_comment_table")
+    suspend fun clearComment()
     @Insert
     suspend fun insertRating(rate: Rating)
 

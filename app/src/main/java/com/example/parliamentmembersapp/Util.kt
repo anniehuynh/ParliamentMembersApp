@@ -1,5 +1,10 @@
 package com.example.parliamentmembersapp
 
+/**
+ * Util kotlin file to display as in xml
+ * by An Huynh
+ * on 20.9.2021
+ */
 import android.content.res.Resources
 import android.os.Build
 import android.text.Html

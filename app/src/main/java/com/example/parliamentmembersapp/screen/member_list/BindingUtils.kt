@@ -13,7 +13,7 @@ import com.example.parliamentmembersapp.setFullName
  */
 @BindingAdapter("fullName")
 fun TextView.setFullNameFormatted(item: MemberOfParliament) {
-    item?.let {
+    item.let {
         text = setFullName(item)
     }
 }

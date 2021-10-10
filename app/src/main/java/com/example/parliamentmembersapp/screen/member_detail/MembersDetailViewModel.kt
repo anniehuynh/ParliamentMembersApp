@@ -18,11 +18,6 @@ import kotlinx.coroutines.launch
 class MembersDetailViewModel : ViewModel() {
     private val repository = MemberRepository()
 
-    //comment
-    private lateinit var _memberComments: LiveData<List<Comment>>
-    val memberComments: LiveData<List<Comment>>
-        get() = _memberComments
-
     //average
     private val _averageRating = MutableLiveData<Double>()
     val averageRating: LiveData<Double>
@@ -60,10 +55,7 @@ class MembersDetailViewModel : ViewModel() {
         }
     }
 
-    //insert comments
-    fun getComments(personNumber: Int) {
-        _memberComments = repository.getComment(personNumber)
-    }
+
 
     //get rating
     fun getRating(personNumber: Int) {
@@ -77,16 +69,5 @@ class MembersDetailViewModel : ViewModel() {
         } else _averageRating.value = null
     }
 
-    /**
-     * navigate to see all comments
-     */
-
-    private val _toComments = MutableLiveData<Boolean>()
-    val toComment: LiveData<Boolean>
-        get() = _toComments
-
-    fun onCommentNavigated() {
-        _toComments.value = false
-    }
 
 }
