@@ -14,7 +14,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.parliamentmembersapp.R
 import com.example.parliamentmembersapp.databinding.FragmentListMembersBinding
+import kotlinx.android.synthetic.main.member_item.view.*
 
 
 class ListMembersFragment : Fragment() {

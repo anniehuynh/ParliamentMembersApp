@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.Default).launch {
             val repository = MemberRepository()
-            //clear all rating and comment existed from the previously run app
-            repository.clearComment()
+            //clear all rating existed from the previously run app
+
             repository.clearRating()
 
             val dataSrc = ParliamentApi.retrofitService.getParliamentMembers()

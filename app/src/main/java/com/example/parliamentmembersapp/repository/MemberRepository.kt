@@ -20,8 +20,6 @@ class MemberRepository {
 
     suspend fun clearRating() = memberDao.clearRating()
 
-    suspend fun clearComment() = memberDao.clearComment()
-
     suspend fun insertRating(rate: Rating) = memberDao.insertRating(rate)
 
     suspend fun insertComment(comment: Comment) = memberDao.insertComment(comment)
@@ -35,7 +33,6 @@ class MemberRepository {
     fun getRating(personNumber: Int) = memberDao.getMembersRating(personNumber)
 
     fun getComment(personNumber: Int) = memberDao.getComment(personNumber)
-
 
 
 

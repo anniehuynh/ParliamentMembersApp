@@ -31,8 +31,6 @@ interface MemberOfParliamentDao {
     @Query("SELECT * FROM member_comment_table WHERE personNumber = :personNumber")
     fun getComment(personNumber: Int): LiveData<List<Comment>>
 
-    @Query("DELETE FROM member_comment_table")
-    suspend fun clearComment()
     @Insert
     suspend fun insertRating(rate: Rating)
 
