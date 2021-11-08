@@ -1,8 +1,7 @@
 # ParliamentMembersApp
 ## About the Project
 
-The target of the project is to design and implement an application that allows user to browse information about members of the
-parliament. It should also be possible to add comments about the MP and give them grades about their performance.
+This is an individual project implemented as part of the course Object-Oriented Programming. The target of the project is to design and implement an application that allows user to browse information about members of the parliament. It should also be possible to add comments about the MP and give them grades about their performance. The app is written in Kotlin with the Android Studio put into use.
 
 ## What are in the app?
 * Retrofit and moshi libraries are used for reading the data. 
